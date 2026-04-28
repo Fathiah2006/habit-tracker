@@ -21,7 +21,7 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="manifest" href="/manifest.json" />
-        <link rel="icon" href="/public/icons/favicon.png" />
+        <link rel="icon" href="/icons/favicon.png" />
       </head>
       <body>
         {children}

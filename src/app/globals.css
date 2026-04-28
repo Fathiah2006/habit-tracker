@@ -1,0 +1,294 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Design Tokens ──────────────────────────────────────────────────────── */
+:root {
+  --font-bebas: "Bebas Neue", Impact, sans-serif;
+  --font-mono: "Space Mono", monospace;
+
+  --b-cream: #f5f0e8;
+  --b-cream-dark: #ede8df;
+  --b-cream-darker: #e0dbd2;
+  --b-black: #1a1a1a;
+  --b-black-soft: #2a2420;
+  --b-ink: rgba(26, 26, 26, 0.85);
+  --b-muted: rgba(26, 26, 26, 0.4);
+  --b-ghost: rgba(26, 26, 26, 0.08);
+  --b-border: #1a1a1a;
+  --b-border-light: rgba(26, 26, 26, 0.15);
+
+  /* Status */
+  --b-done: #1a1a1a;
+  --b-streak: #1a1a1a;
+}
+
+/* ─── Base Reset ─────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  background: var(--b-cream);
+  color: var(--b-black);
+  font-family: var(--font-mono);
+  -webkit-font-smoothing: antialiased;
+  cursor: crosshair;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--b-cream-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--b-black);
+}
+
+/* ─── Typography Helpers ─────────────────────────────────────────────────── */
+.font-display {
+  font-family: var(--font-bebas);
+  letter-spacing: 0.04em;
+}
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* ─── Brutalist UI Components ────────────────────────────────────────────── */
+.b-card {
+  background: var(--b-cream);
+  border: 1.5px solid var(--b-border);
+}
+
+.b-input {
+  width: 100%;
+  background: var(--b-cream-dark);
+  border: 1.5px solid var(--b-border);
+  border-radius: 0;
+  padding: 10px 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--b-black);
+  outline: none;
+  transition: background 0.15s;
+  cursor: text;
+}
+
+.b-input:focus {
+  background: #fff;
+  outline: 3px solid var(--b-black);
+  outline-offset: 0;
+}
+
+.b-input::placeholder {
+  color: var(--b-muted);
+  font-style: italic;
+}
+
+.b-btn-primary {
+  width: 100%;
+  background: var(--b-black);
+  border: 1.5px solid var(--b-black);
+  border-radius: 0;
+  padding: 13px 16px;
+  font-family: var(--font-bebas);
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: var(--b-cream);
+  cursor: pointer;
+  transition:
+    background 0.1s,
+    color 0.1s,
+    transform 0.08s;
+  text-align: center;
+  display: block;
+}
+
+.b-btn-primary:hover {
+  background: var(--b-black-soft);
+}
+.b-btn-primary:active {
+  transform: translate(2px, 2px);
+}
+
+.b-btn-ghost {
+  background: transparent;
+  border: 1.5px solid var(--b-border);
+  border-radius: 0;
+  padding: 10px 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--b-muted);
+  cursor: pointer;
+  transition:
+    background 0.1s,
+    color 0.1s;
+  letter-spacing: 0.5px;
+}
+
+.b-btn-ghost:hover {
+  background: var(--b-ghost);
+  color: var(--b-black);
+}
+
+.b-label {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--b-muted);
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--font-mono);
+}
+
+/* ─── Animations ─────────────────────────────────────────────────────────── */
+
+/* Snap in from left — used on cards */
+@keyframes snap-in {
+  0% {
+    transform: translateX(-8px);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(2px);
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.animate-snap-in {
+  animation: snap-in 0.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Stamp — used on completion */
+@keyframes stamp {
+  0% {
+    transform: scale(1.5) rotate(-8deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(0.92) rotate(2deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+.animate-stamp {
+  animation: stamp 0.25s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Slide up */
+@keyframes b-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-b-slide-up {
+  animation: b-slide-up 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Blink cursor */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* March — dashed border marching ants effect */
+@keyframes march {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+/* Fade in */
+@keyframes b-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.animate-b-fade {
+  animation: b-fade 0.4s ease forwards;
+}
+
+/* Shake — for errors */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-6px);
+  }
+  40% {
+    transform: translateX(6px);
+  }
+  60% {
+    transform: translateX(-4px);
+  }
+  80% {
+    transform: translateX(4px);
+  }
+}
+.animate-shake {
+  animation: shake 0.35s ease forwards;
+}
+
+/* Marquee for splash */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 12s linear infinite;
+}
+
+/* Stagger delays */
+.delay-1 {
+  animation-delay: 0.05s;
+}
+.delay-2 {
+  animation-delay: 0.1s;
+}
+.delay-3 {
+  animation-delay: 0.15s;
+}
+.delay-4 {
+  animation-delay: 0.2s;
+}
+
+/* ─── Focus ──────────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 3px solid var(--b-black);
+  outline-offset: 2px;
+}

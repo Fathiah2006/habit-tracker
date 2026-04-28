@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Habit Tracker",
   description: "Track your daily habits",
   manifest: "/manifest.json",
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export const viewport: Viewport = {
@@ -21,7 +24,6 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="manifest" href="/manifest.json" />
-        <link rel="icon" href="/icons/favicon.png" />
       </head>
       <body>
         {children}

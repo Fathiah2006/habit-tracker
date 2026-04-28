@@ -25,8 +25,7 @@ All data persists locally in the browser using localStorage.
    ```
 
 2. Create placeholder icon files:
-   - `public/icons/icon-192.png` (192x192 image)
-   - `public/icons/icon-512.png` (512x512 image)
+   - `public/icons/favicon.png` (192x192 image)
 
 ## Run Instructions
 
